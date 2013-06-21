@@ -5,12 +5,16 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hello - My Octopress Blog</title>
+  <title>Python Mock: Conditional patching - My Octopress Blog</title>
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="Hello world.
-">
+  <meta name="description" content="The problem &ndash; https://code.google.com/p/mock/issues/detail?id=60 And the solution:&ndash; 1
+2
+3
+4
+5
+def patch(*args, **kwargs): def wrapper( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +23,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://k4ml.github.io/coredump/blog/2013/06/21/hello">
+  <link rel="canonical" href="http://k4ml.github.io/coredump/blog/2013/06/21/python-mock-conditional-patching">
   <link href="/coredump/favicon.png" rel="icon">
   <link href="/coredump/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
@@ -69,7 +73,7 @@
   
   <header>
     
-      <h1 class="entry-title">Hello</h1>
+      <h1 class="entry-title">Python Mock: Conditional Patching</h1>
     
     
       <p class="meta">
@@ -85,14 +89,29 @@
   
 
 
-<time datetime="2013-06-21T11:49:00+08:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
+<time datetime="2013-06-21T12:04:00+08:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Hello world.</p>
+<div class="entry-content"><p>The problem &ndash; <a href="https://code.google.com/p/mock/issues/detail?id=60">https://code.google.com/p/mock/issues/detail?id=60</a></p>
+
+<p>And the solution:&ndash;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;NO_MOCK&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">func</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">mock_patch</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)(</span><span class="n">func</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -115,7 +134,7 @@
   
 
 
-<time datetime="2013-06-21T11:49:00+08:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
+<time datetime="2013-06-21T12:04:00+08:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
       
 
 
@@ -123,7 +142,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://k4ml.github.io/coredump/blog/2013/06/21/hello/" data-via="" data-counturl="http://k4ml.github.io/coredump/blog/2013/06/21/hello/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://k4ml.github.io/coredump/blog/2013/06/21/python-mock-conditional-patching/" data-via="" data-counturl="http://k4ml.github.io/coredump/blog/2013/06/21/python-mock-conditional-patching/" >Tweet</a>
   
   
   
@@ -132,8 +151,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/coredump/blog/2013/06/21/hello/" title="Previous Post: Hello">&laquo; Hello</a>
       
-        <a class="basic-alignment right" href="/coredump/blog/2013/06/21/python-mock-conditional-patching/" title="Next Post: Python Mock: Conditional patching">Python Mock: Conditional patching &raquo;</a>
       
     </p>
   </footer>

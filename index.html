@@ -9,8 +9,12 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="Hello world.
-">
+  <meta name="description" content="The problem &ndash; https://code.google.com/p/mock/issues/detail?id=60 And the solution:&ndash; 1
+2
+3
+4
+5
+def patch(*args, **kwargs): def wrapper( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,6 +76,57 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/coredump/blog/2013/06/21/python-mock-conditional-patching/">Python Mock: Conditional Patching</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-21T12:04:00+08:00" pubdate data-updated="true">Jun 21<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The problem &ndash; <a href="https://code.google.com/p/mock/issues/detail?id=60">https://code.google.com/p/mock/issues/detail?id=60</a></p>
+
+<p>And the solution:&ndash;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">patch</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;NO_MOCK&#39;</span><span class="p">,</span> <span class="bp">False</span><span class="p">):</span>
+</span><span class='line'>            <span class="k">return</span> <span class="n">func</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">mock_patch</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)(</span><span class="n">func</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/coredump/blog/2013/06/21/hello/">Hello</a></h1>
     
     
@@ -114,6 +169,10 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/coredump/blog/2013/06/21/python-mock-conditional-patching/">Python Mock: Conditional Patching</a>
+      </li>
     
       <li class="post">
         <a href="/coredump/blog/2013/06/21/hello/">Hello</a>
