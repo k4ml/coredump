@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://k4ml.github.io/coredump/sitemap.xml 
